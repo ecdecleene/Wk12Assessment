@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Week 5 Home</title>
+
+<script>
+
+	function checkForm(form){
+		if(form.name.value == ""){
+			alert("Input is empty");
+			form.name.focus();
+			return false;
+		}
+		
+		if(form.number.value == ""){
+			alert("Input is empty");
+			form.number.focus();
+			return false;
+		}
+		
+		var regular = /^[\w ]+$/;
+		
+		if(!regular.test(form.name.value)){
+			alert("Invalid input")
+			form.name.focus();
+			return false;
+		}
+		
+		if(!regular.test(form.number.value)){
+			alert("Invalid input")
+			form.number.focus();
+			return false;
+		}
+		
+		return true;
+	}
+
+</script>
+
+</head>
+<body>
+	<form action="addUniformServlet" method="post" onsubmit="return checkForm(this)">
+		Player Name: <input type="text" name="name">
+		Uniform Number: <input type="text" name="number">
+		<input type="submit" value="Add Uniform">
+	</form>
+	<a href="viewUniformsServlet">View Uniforms</a>
+	<a href="viewAllTeamsServlet">View Teams</a>
+	<a href="addUniformsToTeamServlet">Create New Team</a>
+</body>
+</html>
